@@ -1,0 +1,68 @@
+
+<%- include ('partials/_header'); %>
+
+
+    <div class="container">
+        <div class="row">
+            <!-- FORM-->
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/add" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="titulo" placeholder="Inserte titulo" class="form-control mb-3">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="subtitulo" placeholder="Inserte subtitulo" class="form-control mb-3">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="descripcion" cols="80" class="form-control mb-3" placeholder="Insertar descripcion"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                Agregar
+                            </button>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- LIST-->
+            <div class="col-md-7">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Titulo</th>
+                            <th>Subtitulo</th>
+                            <th>Descripción</th>
+                            <th>Operación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var i=0 ; i<publicaciones.length; i++) {%> 
+                            <tr>
+                                <td><%= i+1 %> </td>
+                                <td><%= publicaciones[i].titulo %> </td>
+                                <td><%= publicaciones[i].subtitulo %> </td>
+                                <td><%= publicaciones[i].descripcion %> </td>
+                                <td>
+                                    <a href="/estado/<%= publicaciones[i]._id %>" 
+                                        class="btn <%= publicaciones[i].estado ? 'btn-success' : 'btn-dark' %>">Publicado</a>
+                                    <a href="/delete/<%= publicaciones[i]._id %>" class="btn btn-danger">Eliminar</a>
+                                    <a href="/editar/<%= publicaciones[i]._id %>" class="btn btn-info">Editar</a>
+                                </td>
+                            </tr>
+
+
+                        <% } %> 
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+<%- include ('partials/_footer'); %>
