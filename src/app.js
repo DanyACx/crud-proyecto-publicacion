@@ -12,7 +12,7 @@ mongoose.connect(`mongodb+srv://Fisi:Fisi123@cluster0.jridy.mongodb.net/proyecto
     .catch(err => console.log(err))
 
 
-// importando rutas
+// importando rutas FE
 const indexRoutes = require('./routes/index');
 
 
